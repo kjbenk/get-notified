@@ -17,7 +17,7 @@ function gnt_post_published( $new_status, $old_status, $post ) {
         $settings = gnt_get_settings();
         if ( isset( $settings['notify-publish-post'] ) && $settings['notify-publish-post'] ) {
             gnt_message_slack( $settings['slack-webhook'], array(
-                'text'      => '<' . get_post_permalink( $post->ID ) . '|' . $post->post_title . '> was just published!'
+                'text'  => '<' . get_post_permalink( $post->ID ) . '|' . $post->post_title . '> was just published!'
             ) );
         }
     }
