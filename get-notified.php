@@ -2,31 +2,13 @@
 /**
  * Plugin Name: Get Notified
  * Plugin URI:
- * Description: Get notified about anything happening on your WordPress site.
- * Author: 99 Robots
- * Author URI: https://99robots.com
+ * Description: Get notified is a WordPress plugin taht notifies you about certain events.
+ * Author: Kyle Benk
+ * Author URI: https://kylebenk.com
  * Version: 1.0.0
- * Text Domain: get-notified
+ * Text Domain: gnt
  * Domain Path: languages
  */
-
-/* ===================================================================
- *
- * 99 Robots https://99robots.com
- *
- * Copyright 2015
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * ================================================================= */
 
 // Exit if accessed directly
 
@@ -65,7 +47,6 @@ final class Get_Notified {
 			self::$instance->setup_constants();
 			self::$instance->includes();
 
-			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 		}
 
@@ -154,14 +135,7 @@ final class Get_Notified {
 	 */
 	private function includes() {
 
-		// Model
-
-		require_once( GET_NOTIFIED_PLUGIN_DIR . 'model/notifications.php' );
-
-		// Functions
-
-		require_once( GET_NOTIFIED_PLUGIN_DIR . 'functions/admin-pages.php' );
-		require_once( GET_NOTIFIED_PLUGIN_DIR . 'functions/install.php' );
+		include_once( GET_NOTIFIED_PLUGIN_DIR . 'functions/common.php');
 
 	}
 
@@ -183,15 +157,15 @@ endif; // End if class_exists check
  * This is the function you will use in order to obtain an instance
  * of the Get_Notified class.
  *
- * Example: <?php $get_notified = get_notified_instance(); ?>
+ * Example: <?php $Get_Notified = GET_NOTIFIED_instance(); ?>
  *
  * @access public
  * @return void
  */
-function get_notified_instance() {
+function GET_NOTIFIED_instance() {
 	return Get_Notified::instance();
 }
 
 // Get the class loaded up and running
 
-get_notified_instance();
+GET_NOTIFIED_instance();
