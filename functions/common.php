@@ -153,6 +153,10 @@ function gnt_save_settings($data) {
     unset($data['_wpnonce']);
     unset($data['_wp_http_referer']);
 
+    foreach ( $data as $key => $item ) {
+        $data[$key] = sanitize_text_field( $item );
+    }
+
     update_option( 'gnt_settings', $data );
 }
 
