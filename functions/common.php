@@ -113,15 +113,20 @@ function gnt_admin_page_content() {
                         </td>
                     </tr>
 
-                    <?php if ( isset( $settings['notify-enable-slack'] ) && $settings['notify-enable-slack'] ) { ?>
-                        <tr>
-                            <th><?php esc_attr_e( 'Slack Webhook URL', 'gnt' ); ?></th>
-                            <td>
-                                <input type="text" class="regular-text" name="slack-webhook" value="<?php echo ( isset( $settings['slack-webhook'] ) ? esc_attr( $settings['slack-webhook'] ) : '' ); ?>"/>
-                                <p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
-                            </td>
-                        </tr>
-                    <?php } ?>
+                    <?php if ( isset( $settings['notify-enable-slack'] ) && $settings['notify-enable-slack'] ) {
+                        $hide = '';
+                    } else {
+                        $hide = 'style="display:none;"';
+                    } ?>
+
+                    <tr <?php echo $hide; ?>>
+                        <th><?php esc_attr_e( 'Slack Webhook URL', 'gnt' ); ?></th>
+                        <td>
+                            <input type="text" class="regular-text" name="slack-webhook" value="<?php echo ( isset( $settings['slack-webhook'] ) ? esc_attr( $settings['slack-webhook'] ) : '' ); ?>"/>
+                            <p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
+                        </td>
+                    </tr>
+
 
                 </tbody>
             </table>
