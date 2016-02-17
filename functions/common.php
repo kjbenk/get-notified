@@ -56,6 +56,19 @@ function gnt_admin_page() {
 add_action( 'admin_menu', 'gnt_admin_page' );
 
 /**
+ * Add a action link to the settings page
+ * @param  array $links All of the current links
+ * @return array        All of the new links
+ */
+function gnt_plugin_action_links($links) {
+    $settings_link = array(
+        '<a href="' . admin_url( 'options-general.php?page=get-notified' ) . '">' . esc_attr__( 'Settings', 'gnt' ) . '</a>',
+    );
+    return array_merge( $links, $settings_link );
+}
+add_filter( 'plugin_action_links_' . plugin_basename( GET_NOTIFIED_PLUGIN_FILE ), 'gnt_plugin_action_links' );
+
+/**
  * Add the contents of the settings page
  * @return null
  */
@@ -74,19 +87,29 @@ function gnt_admin_page_content() {
         <h1><?php esc_attr_e( 'Get Notified', 'gnt' ); ?></h1>
 
         <form method="post">
+
+            <h2><?php esc_attr_e( 'Notify On', 'gnt' ); ?></h2>
+
             <table class="form-table">
                 <tbody>
                     <tr>
-                        <th><?php esc_attr_e( 'Notify on Pubslihed Post', 'gnt' ); ?></th>
+                        <th><?php esc_attr_e( 'Pubslihed Post', 'gnt' ); ?></th>
                         <td>
                             <input type="checkbox" name="notify-publish-post" value="yes" <?php echo ( isset( $settings['notify-publish-post'] ) && $settings['notify-publish-post'] ? 'checked="checked"' : ''); ?>/>
                         </td>
                     </tr>
+                </tbody>
+            </table>
 
+            <h2><?php esc_attr_e( 'Send To', 'gnt' ); ?></h2>
+
+            <table class="form-table">
+                <tbody>
                     <tr>
-                        <th><?php esc_attr_e( 'Slack Web Hook', 'gnt' ); ?></th>
+                        <th><?php esc_attr_e( 'Slack Webhook URL', 'gnt' ); ?></th>
                         <td>
-                            <input type="text" class="widefat" name="slack-webhook" value="<?php echo ( isset( $settings['slack-webhook'] ) ? esc_attr( $settings['slack-webhook'] ) : '' ); ?>"/>
+                            <input type="text" class="regular-text" name="slack-webhook" value="<?php echo ( isset( $settings['slack-webhook'] ) ? esc_attr( $settings['slack-webhook'] ) : '' ); ?>"/>
+                            <p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
                         </td>
                     </tr>
                 </tbody>
