@@ -113,15 +113,14 @@ function gnt_admin_page_content() {
                         </td>
                     </tr>
 
-                    <?php if ( isset( $settings['notify-enable-slack'] ) && $settings['notify-enable-slack'] ) { ?>
-                        <tr>
-                            <th><?php esc_attr_e( 'Slack Webhook URL', 'gnt' ); ?></th>
-                            <td>
-                                <input type="text" class="regular-text" name="slack-webhook" value="<?php echo ( isset( $settings['slack-webhook'] ) ? esc_attr( $settings['slack-webhook'] ) : '' ); ?>"/>
-                                <p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
-                            </td>
-                        </tr>
-                    <?php } ?>
+                    <tr style="<?php gnt_hide_row('notify-enable-slack'); ?>">
+                        <th><?php esc_attr_e( 'Slack Webhook URL', 'gnt' ); ?></th>
+                        <td>
+                            <input type="text" class="regular-text" name="slack-webhook" value="<?php echo ( isset( $settings['slack-webhook'] ) ? esc_attr( $settings['slack-webhook'] ) : '' ); ?>"/>
+                            <p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
+                        </td>
+                    </tr>
+
 
                 </tbody>
             </table>
@@ -172,3 +171,18 @@ function gnt_force_redirect($url) {
         </script><?php
     }
 }
+
+/**
+ * Hide Row if setting is disabled
+ * @param  string $setting The setting to check
+ * @echo string 'display:none;' if setting is disabled
+ */
+ function gnt_hide_row($setting) {
+     error_log($setting);
+     $settings = gnt_get_settings();
+     if (isset( $settings[$setting] ) && $settings[$setting]) {
+         echo '';
+     } else {
+         echo 'display:none;';
+     }
+ }
