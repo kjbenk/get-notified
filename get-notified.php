@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Get Notified
  * Plugin URI:
- * Description: Get Notified is a WordPress plugin that sends a slack notification when a post is published.
+ * Description: Get Notified sends a slack notification when a post is published.
  * Author: Kyle Benk
  * Author URI: https://kylebenk.com
  * Version: 1.0.0
