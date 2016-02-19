@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return array The settings array
  */
 function gnt_get_hook_settings() {
-    if ( false === ( $settings = get_option( 'gnt_hooks' ) ) ) {
+    if ( false === ( $settings = get_option( 'gnt_hook_settings' ) ) ) {
         $settings = array();
     }
     return $settings;

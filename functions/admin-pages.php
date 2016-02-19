@@ -77,7 +77,7 @@ function gnt_hooks_page_content() {
 
     if ( isset( $_POST['submit'] ) && check_admin_referer( 'gnt_save_hooks' ) ) {
         gnt_save_hook_settings( $_POST );
-        gnt_force_redirect( get_admin_url() . 'admin.php?page=get-notified-hooks' );
+        gnt_force_redirect( $_POST[ '_wp_http_referer' ] );
     }
 
     include_once( GET_NOTIFIED_PLUGIN_DIR . 'views/hooks.php' );
@@ -95,7 +95,7 @@ function gnt_integrations_page_content() {
 
     if ( isset( $_POST['submit'] ) && check_admin_referer( 'gnt_save_integrations' ) ) {
         gnt_save_integration_settings( $_POST );
-        gnt_force_redirect( get_admin_url() . 'admin.php?page=get-notified-integrations' );
+        gnt_force_redirect( $_POST[ '_wp_http_referer' ] );
     }
 
     include_once( GET_NOTIFIED_PLUGIN_DIR . 'views/integrations.php' );

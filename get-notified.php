@@ -145,6 +145,11 @@ final class Get_Notified {
 		include_once( GET_NOTIFIED_PLUGIN_DIR . 'functions/integrations.php' );
 		include_once( GET_NOTIFIED_PLUGIN_DIR . 'functions/hooks.php' );
 
+		// Hooks
+
+		include_once( GET_NOTIFIED_PLUGIN_DIR . 'hooks/hooks-table.php' );
+		include_once( GET_NOTIFIED_PLUGIN_DIR . 'hooks/posts.php' );
+
 		// Integrations
 
 		include_once( GET_NOTIFIED_PLUGIN_DIR . 'integrations/slack.php' );
@@ -156,7 +161,7 @@ final class Get_Notified {
 	 *
 	 * @return null
 	 */
-	private function initial_setup() {
+	public function initial_setup() {
 
 		// Integrations
 

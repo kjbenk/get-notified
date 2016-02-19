@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return array The settings array
  */
 function gnt_get_integration_settings() {
-    if ( false === ( $settings = get_option( 'gnt_integrations' ) ) ) {
+    if ( false === ( $settings = get_option( 'gnt_integration_settings' ) ) ) {
         $settings = array();
     }
     return $settings;
