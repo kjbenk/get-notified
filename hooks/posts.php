@@ -45,8 +45,9 @@ class GNT_Hook_Post {
                 if ( $old_status != $post_status && $new_status == $post_status ) {
                     do_action( 'gnt_hook_post_status_' . $post_status, array(
                         'hook'          => 'post_' . $post_status,
+                        'text'          => $post->post_title . __( ' changed status to ', 'gnt' ) . $post_status,
                         'post'          => $post,
-                        'post_status'    => $post_status,
+                        'post_status'   => $post_status,
                     ) );
                 }
             }

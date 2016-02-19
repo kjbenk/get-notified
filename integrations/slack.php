@@ -99,7 +99,7 @@ class GNT_Slack extends GNT_Integration {
      */
     function settings($settings) {
         ?>
-        <h2><?php esc_attr_e( 'Slack', 'gnt' ); ?></h2>
+        <h1><?php esc_attr_e( 'Slack', 'gnt' ); ?></h1>
         <table class="form-table">
             <tbody>
 
