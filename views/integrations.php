@@ -1,5 +1,4 @@
 <div class="wrap">
-    <h1><?php esc_attr_e( 'Integrations', 'gnt' ); ?></h1>
     <form method="post">
         <?php
         foreach ( $integrations as $key => $integration ) {

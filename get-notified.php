@@ -47,8 +47,8 @@ final class Get_Notified {
 			self::$instance->setup_constants();
 			self::$instance->includes();
 
-			add_action( 'plugins_loaded', 	array( self::$instance, 'load_textdomain' ) );
-			add_action( 'init', 			array( self::$instance, 'initial_setup' ) );
+			add_action( 'plugins_loaded',   array( self::$instance, 'load_textdomain' ) );
+			add_action( 'init',             array( self::$instance, 'initial_setup' ) );
 		}
 
 		// Return the Get_Notified object
@@ -152,6 +152,7 @@ final class Get_Notified {
 
 		// Integrations
 
+		include_once( GET_NOTIFIED_PLUGIN_DIR . 'integrations/integration.php' );
 		include_once( GET_NOTIFIED_PLUGIN_DIR . 'integrations/slack.php' );
 
 	}
@@ -163,18 +164,17 @@ final class Get_Notified {
 	 */
 	public function initial_setup() {
 
-		// Integrations
-
-		if ( function_exists('gnt_register_integration') ) {
-			do_action( 'gnt_setup_integrations' );
-		}
-
 		// Hooks
 
-		if ( function_exists('gnt_register_hook') ) {
+		if ( function_exists( 'gnt_register_hook' ) ) {
 			do_action( 'gnt_setup_hooks' );
 		}
 
+		// Integrations
+
+		if ( function_exists( 'gnt_register_integration' ) ) {
+			do_action( 'gnt_setup_integrations' );
+		}
 	}
 
 	/**

@@ -4,7 +4,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class GNT_Slack {
+class GNT_Slack extends GNT_Integration {
 
     /**
      * The slug for this integration
@@ -17,14 +17,12 @@ class GNT_Slack {
      * Function that is run upon creating instance
      */
     public function __construct() {
-        add_action( 'gnt_setup_integrations',                   array( $this, 'add_integration' ) );
+        parent::__construct();
+
+        add_action( 'gnt_setup_integrations',   array( $this, 'add_integration' ) );
+        add_action( 'gnt_integration_send',     array( $this, 'check_send_message' ), 10, 3 );
+
         add_action( 'gnt_integration_content_' . $this->slug,   array( $this, 'settings' ) );
-
-        $hooks = gnt_get_hooks();
-
-        foreach ( $hooks as $hook ) {
-            add_action( 'gnt_hook_' . $hook, array( $this, 'send') );
-        }
     }
 
     /**
@@ -38,34 +36,42 @@ class GNT_Slack {
     }
 
     /**
-     * Send post data
+     * Should we send the message over to slack?
      *
-     * @param  object $post WP_Post object
+     * @param  array $data      The data to be sent
+     * @param  array $settings  The Integration settings
+     * @param  bool             Is this a default message?
      * @return null
      */
-    function send($data) {
-        if ( ! isset( $data['hook'] ) || empty( $data['hook'] ) ) {
+    function check_send_message($data, $settings, $default) {
+
+        if ( ! isset( $settings[ $this->slug . '-enable' ] ) ) {
             return;
         }
-        $settings = gnt_get_integration_settings();
 
-        switch ( $data['hook'] ) {
-            case 'post_published':
-                if ( ! isset( $settings[ $this->slug . '-webhook'] ) && ! empty( $settings[ $this->slug . '-webhook' ] ) ) {
-                    $this->send_message( $settings[ $this->slug . '-webhook' ], array(
-                        'text'  => '<' . get_post_permalink( $post->ID ) . '|' . $post->post_title . '> was just published!'
-                    ) );
-                }
-            break;
+        // Check if webhook is set
 
-            default;
-                if ( ! isset( $data['text'] ) || empty( $data['text'] ) ) {
-                    $data['text'] = __( $data['hook'], 'gnt' );
-                }
-                $this->send_message( $settings[ $this->slug . '-webhook' ], array(
-                    'text'  => $data['text'],
-                ) );
-            break;
+        $webhook = $settings[ $this->slug . '-webhook' ];
+        if ( empty( $webhook ) ) {
+            return;
+        }
+
+        // Check if this is a default message
+
+        if ( $default ) {
+            $this->send_message( $webhook, array(
+                'text'  => $data['text'],
+            ) );
+            return;
+        }
+
+        // Post Status
+
+        if ( isset( $data['post_status'] ) && isset( $data['post'] ) ) {
+            $this->send_message( $webhook, array(
+                'text'  => '<' . get_post_permalink( $data['post']->ID ) . '|' . $data['post']->post_title . '> changed status to ' . $data['post_status'] . '.',
+            ) );
+            return;
         }
     }
 
@@ -104,16 +110,13 @@ class GNT_Slack {
                     </td>
                 </tr>
 
-                <?php if ( isset( $settings[ $this->slug . '-enable' ] ) && $settings[ $this->slug . '-enable' ] ) { ?>
-                    <tr>
-                        <th><?php esc_attr_e( 'Webhook URL', 'gnt' ); ?></th>
-                        <td>
-                            <input type="text" class="regular-text" name="<?php echo $this->slug; ?>-webhook" value="<?php echo ( isset( $settings[ $this->slug . '-webhook' ] ) ? esc_attr( $settings[ $this->slug . '-webhook' ] ) : '' ); ?>"/>
-                            <p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
-                        </td>
-                    </tr>
-                <?php } ?>
-
+                <tr style="<?php echo $this->show_setting( $settings[ $this->slug . '-enable' ] ); ?>">
+                    <th><?php esc_attr_e( 'Webhook URL', 'gnt' ); ?></th>
+                    <td>
+                        <input type="text" class="regular-text" name="<?php echo $this->slug; ?>-webhook" value="<?php echo ( isset( $settings[ $this->slug . '-webhook' ] ) ? esc_attr( $settings[ $this->slug . '-webhook' ] ) : '' ); ?>"/>
+                        <p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <?php

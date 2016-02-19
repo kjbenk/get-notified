@@ -11,43 +11,44 @@ class GNT_Hook_Post {
      */
     public function __construct() {
         add_action( 'gnt_setup_hooks',   array( $this, 'add_hooks' ) );
-
-        // Hooks
-        add_action( 'transition_post_status', array( $this, 'post_published' ), 10, 3 );
+        add_action( 'transition_post_status', array( $this, 'post_status_change' ), 10, 3 );
     }
 
     /**
      * Add a hooks
      */
     function add_hooks() {
-        gnt_register_hook( 'post_published', array(
-            'slug'  => 'post_published',
-            'name'  => __( 'Post Published', 'gnt' ),
-            'desc'  => __( 'Trigerred when a post\'s status changes to publish from a non-publish status.', 'gnt' ),
-        ) );
-        gnt_register_hook( 'post_trashed', array(
-            'slug'  => 'post_trashed',
-            'name'	=> __( 'Post Trashed', 'gnt' ),
-            'desc'  => __( 'Trigerred when a post\'s status changes to trash from a non-trash status.', 'gnt' ),
-        ) );
+        $post_statuses = get_post_stati();
+        foreach ( $post_statuses as $post_status ) {
+            gnt_register_hook( 'post_status_' . $post_status, array(
+                'slug'  => 'post_status_' . $post_status,
+                'name'  => __( 'Post ' . ucfirst( $post_status ), 'gnt' ),
+                'desc'  => __( 'Triggered when a post\'s status changes to ' . $post_status . '.', 'gnt' ),
+            ) );
+        }
     }
 
     /**
-     * Post is published
+     * Post status change
      *
      * @param  string   $new_status The new status of the post
      * @param  string   $old_status The old statud of the post
      * @param  WP_Post  $post       The WP_Post object
      * @return null
      */
-    function post_published( $new_status, $old_status, $post ) {
-        if ( $old_status != 'publish' && $new_status == 'publish' ) {
-            $settings = gnt_get_settings();
-            if ( isset( $settings['hook-post_published'] ) && $settings['hook-post_published'] ) {
-                do_action( 'gnt_hook_post_published', array(
-                    'hook'  => 'post_published',
-                    'post'  => $post,
-                ) );
+    function post_status_change( $new_status, $old_status, $post ) {
+        $post_statuses = get_post_stati();
+        $hook_settings = gnt_get_hook_settings();
+
+        foreach ( $post_statuses as $post_status ) {
+            if ( isset( $hook_settings['post_status_' . $post_status . '-enable'] ) && $hook_settings['post_status_' . $post_status . '-enable'] ) {
+                if ( $old_status != $post_status && $new_status == $post_status ) {
+                    do_action( 'gnt_hook_post_status_' . $post_status, array(
+                        'hook'          => 'post_' . $post_status,
+                        'post'          => $post,
+                        'post_status'    => $post_status,
+                    ) );
+                }
             }
         }
     }
