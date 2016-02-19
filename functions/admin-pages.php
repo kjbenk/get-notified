@@ -15,17 +15,26 @@ function gnt_admin_page() {
         __( 'Get Notified', 'gnt' ),
         'manage_options',
         'get-notified',
-        'gnt_settings_page_content',
+        'gnt_info_page_content',
         'dashicons-megaphone'
     );
 
+    // add_submenu_page(
+    //     'get-notified',
+    //     __( 'Settings', 'gnt' ),
+    //     __( 'Settings', 'gnt' ),
+    //     'manage_options',
+    //     'get-notified',
+    //     'gnt_settings_page_content'
+    // );
+
     add_submenu_page(
         'get-notified',
-        __( 'Settings', 'gnt' ),
-        __( 'Settings', 'gnt' ),
+        __( 'Information', 'gnt' ),
+        __( 'Information', 'gnt' ),
         'manage_options',
         'get-notified',
-        'gnt_settings_page_content'
+        'gnt_info_page_content'
     );
 
     add_submenu_page(
@@ -63,6 +72,29 @@ function gnt_settings_page_content() {
     }
 
     include_once( GET_NOTIFIED_PLUGIN_DIR . 'views/settings.php' );
+}
+
+/**
+ * The content for the Info Page
+ *
+ * @return null
+ */
+function gnt_info_page_content() {
+    ?><div class="wrap">
+        <h1><?php esc_attr_e( 'Information', 'gnt' ); ?></h1>
+        <p>This is an open source project that I started to give developers the tools they need to create great notifications for a WordPress site. I welcome any help from developers who want to contribute :)</p>
+        <p>There are two main parts of the plugin: Hooks and Integrations. Hooks are basically the WordPress defined action hooks for any specific event. This can be when a post is published or when a theme is activated. Integrations are the tools used to notify people of these events, like email or slack. Developers can add new Hooks and/or Integrations to the plugin to perform the tasks they need.</p>
+
+        <a href="https://github.com/kjbenk/get-notified" target="_blank">Contribute - Read more</a> |
+        <a href="https://github.com/kjbenk/get-notified/issues" target="_blank">Report a Bug</a>
+
+        <p>
+            <iframe src="https://ghbtns.com/github-btn.html?user=kjbenk&repo=get-notified&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+        </p>
+        <p>
+            <iframe src="https://ghbtns.com/github-btn.html?user=kjbenk&repo=get-notified&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+        </p>
+    </div><?php
 }
 
 /**
