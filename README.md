@@ -1,3 +1,5 @@
+![Banner](https://github.com/kjbenk/get-notified/blob/master/assets/banner-772x250.png)
+
 # Get Notified
 
 [![Build Status](https://travis-ci.org/kjbenk/get-notified.svg?branch=master)](https://travis-ci.org/kjbenk/get-notified)
