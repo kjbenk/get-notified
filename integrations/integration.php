@@ -4,14 +4,14 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'GNT_Integration' ) ) :
+
 class GNT_Integration {
 
     /**
      * Function that is run upon creating instance
      */
-    public function __construct() {
-        add_action( 'admin_init', array( $this, 'add_hooks') );
-    }
+    public function __construct() {}
 
     /**
      * Add all the hooks
@@ -76,3 +76,8 @@ class GNT_Integration {
         return 'display:none;';
     }
 }
+
+$gnt_integration_class = new GNT_Integration();
+add_action( 'admin_init', array( $gnt_integration_class, 'add_hooks') );
+
+endif;

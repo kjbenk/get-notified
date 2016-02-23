@@ -154,6 +154,7 @@ final class Get_Notified {
 
 		include_once( GET_NOTIFIED_PLUGIN_DIR . 'integrations/integration.php' );
 		include_once( GET_NOTIFIED_PLUGIN_DIR . 'integrations/slack.php' );
+		include_once( GET_NOTIFIED_PLUGIN_DIR . 'integrations/email.php' );
 
 	}
 

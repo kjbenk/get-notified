@@ -4,6 +4,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'GNT_Hook_Post' ) ) :
+
 class GNT_Hook_Post {
 
     /**
@@ -56,3 +58,5 @@ class GNT_Hook_Post {
 }
 
 $gnt_hook_post_class = new GNT_Hook_Post();
+
+endif;

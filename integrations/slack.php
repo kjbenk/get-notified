@@ -4,6 +4,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( ! class_exists( 'GNT_Slack' ) ) :
+
 class GNT_Slack extends GNT_Integration {
 
     /**
@@ -124,3 +126,5 @@ class GNT_Slack extends GNT_Integration {
 }
 
 $gnt_slack_class = new GNT_Slack();
+
+endif;
