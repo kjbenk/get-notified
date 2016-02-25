@@ -31,6 +31,11 @@ You can submit all bugs via issues at the Github repo.
 
 https://github.com/kjbenk/get-notified/issues
 
+== Screenshots ==
+
+1. You can enable or disable what events you want to be notified about.
+2. Integrations can be enabled or disabled at any time.
+
 == Changelog ==
 
 = 1.0.1 = 2016-2-25
