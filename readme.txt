@@ -3,7 +3,7 @@ Contributors: kjbenk, wpmonty
 Tags: notification, notify, post, message, alert, ping, slack, email
 Requires at least: 4.0
 Tested up to: 4.4.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 
 Get Notified is a simple to use notification plugin that notifies you of certain WordPress events.
@@ -37,6 +37,9 @@ https://github.com/kjbenk/get-notified/issues
 2. Integrations can be enabled or disabled at any time.
 
 == Changelog ==
+ 
+= 1.0.2 = 2016-2-25
+* ADDED: Screenshots
 
 = 1.0.1 = 2016-2-25
 * UPDATED: readme text to include support for email integration
