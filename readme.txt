@@ -1,6 +1,6 @@
 === Get Notified ===
 Contributors: kjbenk, wpmonty
-Tags: notification, notify, post, message, alert, ping, slack, email
+Tags: notification, notify, email, message, ping, alert, slack, post, post status, status 
 Requires at least: 4.0
 Tested up to: 4.4.2
 Stable tag: 1.0.2
@@ -37,7 +37,7 @@ https://github.com/kjbenk/get-notified/issues
 2. Integrations can be enabled or disabled at any time.
 
 == Changelog ==
- 
+
 = 1.0.2 = 2016-2-25
 * ADDED: Screenshots
 
