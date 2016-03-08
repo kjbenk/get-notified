@@ -2,17 +2,19 @@
 
 // Exit if accessed directly
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Get the settings
  * @return array The settings array
  */
 function gnt_get_integration_settings() {
-    if ( false === ( $settings = get_option( 'gnt_integration_settings' ) ) ) {
-        $settings = array();
-    }
-    return $settings;
+	if ( false === ( $settings = get_option( 'gnt_integration_settings' ) ) ) {
+		$settings = array();
+	}
+	return $settings;
 }
 
 /**
@@ -20,16 +22,15 @@ function gnt_get_integration_settings() {
  * @param  array  $data The new settings to save
  * @return null
  */
-function gnt_save_integration_settings($data) {
-    unset( $data['submit'] );
-    unset( $data['_wpnonce'] );
-    unset( $data['_wp_http_referer'] );
+function gnt_save_integration_settings( $data ) {
+	unset( $data['submit'] );
+	unset( $data['_wpnonce'] );
+	unset( $data['_wp_http_referer'] );
 
-    foreach ( $data as $key => $item ) {
-        $data[$key] = sanitize_text_field( $item );
-    }
-
-    update_option( 'gnt_integration_settings', apply_filters( 'gnt_save_integrations', $data ) );
+	foreach ( $data as $key => $item ) {
+		$data[ $key ] = sanitize_text_field( $item );
+	}
+	update_option( 'gnt_integration_settings', apply_filters( 'gnt_save_integrations', $data ) );
 }
 
 /**
@@ -58,7 +59,7 @@ function gnt_get_integrations() {
  * @param array $args (default: array())
  * @return void
  */
-function gnt_register_integration($integration, $args = array()) {
+function gnt_register_integration( $integration, $args = array() ) {
 
 	global $gnt_integrations;
 
@@ -69,7 +70,7 @@ function gnt_register_integration($integration, $args = array()) {
 	// Default integration
 
 	$default = array(
-		'name' => __('Integration', 'gnt'),
+		'name' => __( 'Integration', 'gnt' ),
 	);
 
 	$args = array_merge( $default, $args );
@@ -82,7 +83,7 @@ function gnt_register_integration($integration, $args = array()) {
 	* Fires after an integration is registered.
 	*
 	* @param string $integration Integration
-	* @param array $args      Arguments used to register the integration.
+	* @param array $args	  Arguments used to register the integration.
 	*/
 	do_action( 'gnt_registed_integration', $integration, $args );
 

@@ -1,0 +1,30 @@
+{
+    "name": "kjbenk/get-notified",
+    "type": "wordpress-plugin",
+    "description": "Get Notified about things happneing on your WordPress site.",
+    "homepage": "https://github.com/kjbenk/get-notified",
+    "license": "GPL2+",
+    "authors": [
+        {
+            "name": "Kyle Benk",
+            "homepage": "http://kylebenk.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/kjbenk/get-notified/issues"
+    },
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "2.3.4",
+        "wp-coding-standards/wpcs": "0.6.0"
+    },
+    "extra": {
+        "installer-name": "json-rest-api-get-notified"
+    },
+    "scripts": {
+        "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs",
+        "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs"
+    }
+}
