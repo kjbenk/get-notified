@@ -5,9 +5,9 @@
  * Description: Get Notified is a simple to use notification plugin that notifies you of certain WordPress events.
  * Author: Kyle Benk
  * Author URI: https://kylebenk.com
- * Version: 1.0.2
+ * Version: 1.0.3
  * Text Domain: gnt
- * Domain Path: languages
+ * Domain Path: /languages
  */
 
 // Exit if accessed directly
@@ -95,13 +95,13 @@ if ( ! class_exists( 'Get_Notified' ) ) :
 			// Plugin text domain
 
 			if ( ! defined( 'GET_NOTIFIED_TEXT_DOMAIN' ) ) {
-				define( 'GET_NOTIFIED_TEXT_DOMAIN', 'get-notified' );
+				define( 'GET_NOTIFIED_TEXT_DOMAIN', 'gnt' );
 			}
 
 			// Plugin version
 
 			if ( ! defined( 'GET_NOTIFIED_VERSION' ) ) {
-				define( 'GET_NOTIFIED_VERSION', '1.0.2' );
+				define( 'GET_NOTIFIED_VERSION', '1.0.3' );
 			}
 
 			// Plugin Folder Path
@@ -187,7 +187,7 @@ if ( ! class_exists( 'Get_Notified' ) ) :
 		 * @return void
 		 */
 		public function load_textdomain() {
-			load_textdomain( GET_NOTIFIED_TEXT_DOMAIN , dirname( plugin_basename( GET_NOTIFIED_PLUGIN_FILE ) ) . '/languages/' );
+			load_plugin_textdomain( 'gnt', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 		}
 	}
 
