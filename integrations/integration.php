@@ -43,7 +43,7 @@ if ( ! class_exists( 'GNT_Integration' ) ) :
 			// Default Message
 
 			if ( ! isset( $data['text'] ) || empty( $data['text'] ) ) {
-				$data['text'] = __( $data['hook'], 'gnt' );
+				$data['text'] = __( $data['hook'], 'get-notified' );
 
 				/**
 				 * Action to send data via the integration

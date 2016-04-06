@@ -24,8 +24,8 @@ if ( ! class_exists( 'GNT_Hooks_Table' ) ) :
 		function get_columns() {
 			$columns = array(
 				'cb'	=> '',
-				'name'  => __( 'Name', 'gnt' ),
-				'desc'  => __( 'Description', 'gnt' ),
+				'name'  => __( 'Name', 'get-notified' ),
+				'desc'  => __( 'Description', 'get-notified' ),
 			);
 			return $columns;
 		}

@@ -34,7 +34,7 @@ if ( ! class_exists( 'GNT_Slack' ) ) :
 		 */
 		function add_integration() {
 			gnt_register_integration( $this->slug, array(
-				'name'	=> __( 'Slack', 'gnt' ),
+				'name'	=> __( 'Slack', 'get-notified' ),
 				'hooks' => true,
 			) );
 		}
@@ -103,22 +103,22 @@ if ( ! class_exists( 'GNT_Slack' ) ) :
 		 */
 		function settings( $settings ) {
 			?>
-			<h1><?php esc_attr_e( 'Slack', 'gnt' ); ?></h1>
+			<h1><?php esc_attr_e( 'Slack', 'get-notified' ); ?></h1>
 			<table class="form-table">
 				<tbody>
 
 					<tr>
-						<th><?php esc_attr_e( 'Enable', 'gnt' ); ?></th>
+						<th><?php esc_attr_e( 'Enable', 'get-notified' ); ?></th>
 						<td>
 							<input type="checkbox" name="<?php esc_attr_e( $this->slug ); ?>-enable" value="yes" <?php echo ( isset( $settings[ $this->slug . '-enable' ] ) && $settings[ $this->slug . '-enable' ] ? 'checked="checked"' : ''); ?>/>
 						</td>
 					</tr>
 
 					<tr style="<?php esc_attr_e( $this->show_setting( $settings[ $this->slug . '-enable' ] ) ); ?>">
-						<th><?php esc_attr_e( 'Webhook URL', 'gnt' ); ?></th>
+						<th><?php esc_attr_e( 'Webhook URL', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-webhook" value="<?php echo ( isset( $settings[ $this->slug . '-webhook' ] ) ? esc_attr( $settings[ $this->slug . '-webhook' ] ) : '' ); ?>"/>
-							<p class="description"><?php esc_attr_e( 'Create a', 'gnt' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'gnt' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'gnt' ); ?></p>
+							<p class="description"><?php esc_attr_e( 'Create a', 'get-notified' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_attr_e( 'Slack Webhook', 'get-notified' ); ?></a> <?php esc_attr_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'get-notified' ); ?></p>
 						</td>
 					</tr>
 				</tbody>

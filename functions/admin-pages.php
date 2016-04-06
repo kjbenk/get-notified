@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 function gnt_admin_page() {
 
 	add_menu_page(
-		__( 'Get Notified', 'gnt' ),
-		__( 'Get Notified', 'gnt' ),
+		__( 'Get Notified', 'get-notified' ),
+		__( 'Get Notified', 'get-notified' ),
 		'manage_options',
 		'get-notified',
 		'gnt_info_page_content',
@@ -23,8 +23,8 @@ function gnt_admin_page() {
 
 	// add_submenu_page(
 	//	 'get-notified',
-	//	 __( 'Settings', 'gnt' ),
-	//	 __( 'Settings', 'gnt' ),
+	//	 __( 'Settings', 'get-notified' ),
+	//	 __( 'Settings', 'get-notified' ),
 	//	 'manage_options',
 	//	 'get-notified',
 	//	 'gnt_settings_page_content'
@@ -32,8 +32,8 @@ function gnt_admin_page() {
 
 	add_submenu_page(
 		'get-notified',
-		__( 'Information', 'gnt' ),
-		__( 'Information', 'gnt' ),
+		__( 'Information', 'get-notified' ),
+		__( 'Information', 'get-notified' ),
 		'manage_options',
 		'get-notified',
 		'gnt_info_page_content'
@@ -41,8 +41,8 @@ function gnt_admin_page() {
 
 	add_submenu_page(
 		'get-notified',
-		__( 'Hooks', 'gnt' ),
-		__( 'Hooks', 'gnt' ),
+		__( 'Hooks', 'get-notified' ),
+		__( 'Hooks', 'get-notified' ),
 		'manage_options',
 		'get-notified-hooks',
 		'gnt_hooks_page_content'
@@ -50,8 +50,8 @@ function gnt_admin_page() {
 
 	add_submenu_page(
 		'get-notified',
-		__( 'Integrations', 'gnt' ),
-		__( 'Integrations', 'gnt' ),
+		__( 'Integrations', 'get-notified' ),
+		__( 'Integrations', 'get-notified' ),
 		'manage_options',
 		'get-notified-integrations',
 		'gnt_integrations_page_content'
@@ -83,7 +83,7 @@ function gnt_settings_page_content() {
  */
 function gnt_info_page_content() {
 	?><div class="wrap">
-		<h1><?php esc_attr_e( 'Information', 'gnt' ); ?></h1>
+		<h1><?php esc_attr_e( 'Information', 'get-notified' ); ?></h1>
 		<p>This is an open source project that I started to give developers the tools they need to create great notifications for a WordPress site. I welcome any help from developers who want to contribute :)</p>
 		<p>There are two main parts of the plugin: Hooks and Integrations. Hooks are basically the WordPress defined action hooks for any specific event. This can be when a post is published or when a theme is activated. Integrations are the tools used to notify people of these events, like email or slack. Developers can add new Hooks and/or Integrations to the plugin to perform the tasks they need.</p>
 

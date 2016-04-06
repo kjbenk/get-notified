@@ -41,7 +41,7 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 		 */
 		function add_integration() {
 			gnt_register_integration( $this->slug, array(
-				'name'	=> __( 'Email', 'gnt' ),
+				'name'	=> __( 'Email', 'get-notified' ),
 				'hooks' => true,
 			) );
 		}
@@ -104,22 +104,22 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 		 */
 		function settings( $settings ) {
 			?>
-			<h1><?php esc_attr_e( 'Email', 'gnt' ); ?></h1>
+			<h1><?php esc_attr_e( 'Email', 'get-notified' ); ?></h1>
 			<table class="form-table">
 				<tbody>
 
 					<tr>
-						<th><?php esc_attr_e( 'Enable', 'gnt' ); ?></th>
+						<th><?php esc_attr_e( 'Enable', 'get-notified' ); ?></th>
 						<td>
 							<input type="checkbox" name="<?php esc_attr_e( $this->slug ); ?>-enable" value="yes" <?php echo ( isset( $settings[ $this->slug . '-enable' ] ) && $settings[ $this->slug . '-enable' ] ? 'checked="checked"' : ''); ?>/>
 						</td>
 					</tr>
 
 					<tr style="<?php esc_attr_e( $this->show_setting( $settings[ $this->slug . '-enable' ] ) ); ?>">
-						<th><?php esc_attr_e( 'To Email', 'gnt' ); ?></th>
+						<th><?php esc_attr_e( 'To Email', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-to-emails" value="<?php echo ( isset( $settings[ $this->slug . '-to-emails' ] ) && ! empty( $settings[ $this->slug . '-to-emails' ] ) ? esc_attr( $settings[ $this->slug . '-to-emails' ] ) : esc_attr( get_option( 'admin_email' ) ) ); ?>"/>
-							<p class="description"><?php esc_attr_e( 'What emails should get this notification? Use a comma separated list for multiple emails.', 'gnt' ); ?></p>
+							<p class="description"><?php esc_attr_e( 'What emails should get this notification? Use a comma separated list for multiple emails.', 'get-notified' ); ?></p>
 						</td>
 					</tr>
 				</tbody>

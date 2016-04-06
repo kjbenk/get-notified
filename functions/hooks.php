@@ -65,7 +65,7 @@ function gnt_register_hook( $hook, $args = array() ) {
 
 	// Default hook
 	$default = array(
-		'name' => __( 'Hook', 'gnt' ),
+		'name' => __( 'Hook', 'get-notified' ),
 	);
 	$args = array_merge( $default, $args );
 

@@ -26,8 +26,8 @@ if ( ! class_exists( 'GNT_Hook_Post' ) ) :
 			foreach ( $post_statuses as $post_status ) {
 				gnt_register_hook( 'post_status_' . $post_status, array(
 					'slug'  => 'post_status_' . $post_status,
-					'name'  => __( 'Post ' . ucfirst( $post_status ), 'gnt' ),
-					'desc'  => __( 'Triggered when a post\'s status changes to ' . $post_status . '.', 'gnt' ),
+					'name'  => __( 'Post ' . ucfirst( $post_status ), 'get-notified' ),
+					'desc'  => __( 'Triggered when a post\'s status changes to ' . $post_status . '.', 'get-notified' ),
 				) );
 			}
 		}
@@ -49,7 +49,7 @@ if ( ! class_exists( 'GNT_Hook_Post' ) ) :
 					if ( $old_status !== $post_status && $new_status === $post_status ) {
 						do_action( 'gnt_hook_post_status_' . $post_status, array(
 							'hook'		  => 'post_' . $post_status,
-							'text'		  => $post->post_title . __( ' changed status to ', 'gnt' ) . $post_status,
+							'text'		  => $post->post_title . __( ' changed status to ', 'get-notified' ) . $post_status,
 							'post'		  => $post,
 							'post_status'   => $post_status,
 						) );

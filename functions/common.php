@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function gnt_plugin_action_links( $links ) {
 	$settings_link = array(
-		'<a href="' . admin_url( 'options-general.php?page=get-notified' ) . '">' . esc_attr__( 'Settings', 'gnt' ) . '</a>',
+		'<a href="' . admin_url( 'options-general.php?page=get-notified' ) . '">' . esc_attr__( 'Settings', 'get-notified' ) . '</a>',
 	);
 	return array_merge( $links, $settings_link );
 }

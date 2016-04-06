@@ -70,7 +70,7 @@ function gnt_register_integration( $integration, $args = array() ) {
 	// Default integration
 
 	$default = array(
-		'name' => __( 'Integration', 'gnt' ),
+		'name' => __( 'Integration', 'get-notified' ),
 	);
 
 	$args = array_merge( $default, $args );
