@@ -83,9 +83,26 @@ function gnt_settings_page_content() {
  */
 function gnt_info_page_content() {
 	?><div class="wrap">
+
 		<h1><?php esc_attr_e( 'Information', 'get-notified' ); ?></h1>
+
+		<p>Get Notified sends you notifications when certain events happen on your site.</p>
+
+		<p>For now, the plugin simply sends a notification via email or a message to a Slack channel when a post changes status (i.e. publish, pending, draft, trash) your site.</p>
+
+		<h2><?php esc_attr_e( 'How to use Get Notified', 'get-notified' ); ?></h2>
+
+		<p>First, enable what you want to be notified about on the <a href="<?php echo get_admin_url() . 'admin.php?page=get-notified-hooks'; ?>">Hooks settings page</a>.</p>
+
+		<p>Then, select where you want to be notified on the <a href="<?php echo get_admin_url() . 'admin.php?page=get-notified-integrations'; ?>">Integrations settings page</a>.</p>
+
+    <p>We will continue to add new integrations and WordPress events, so please feel free to <a href="https://github.com/kjbenk/get-notified/issues" target="_blank">request new features</a>.</p>
+
+		<h2><?php esc_attr_e( 'Contributing', 'get-notified' ); ?></h2>
+
 		<p>This is an open source project that I started to give developers the tools they need to create great notifications for a WordPress site. I welcome any help from developers who want to contribute :)</p>
-		<p>There are two main parts of the plugin: Hooks and Integrations. Hooks are basically the WordPress defined action hooks for any specific event. This can be when a post is published or when a theme is activated. Integrations are the tools used to notify people of these events, like email or slack. Developers can add new Hooks and/or Integrations to the plugin to perform the tasks they need.</p>
+
+		<p>There are two main parts of the plugin: Hooks and Integrations. Hooks are basically the WordPress defined action hooks for any specific event. This can be when a post is published or when a theme is activated. Integrations are the tools used to notify people of these events, like Email or Slack. Developers can add new Hooks and/or Integrations to the plugin to perform the tasks they need.</p>
 
 		<a href="https://github.com/kjbenk/get-notified" target="_blank">Contribute - Read more</a> |
 		<a href="https://github.com/kjbenk/get-notified/issues" target="_blank">Report a Bug</a>
@@ -93,9 +110,11 @@ function gnt_info_page_content() {
 		<p>
 			<iframe src="https://ghbtns.com/github-btn.html?user=kjbenk&repo=get-notified&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 		</p>
+
 		<p>
 			<iframe src="https://ghbtns.com/github-btn.html?user=kjbenk&repo=get-notified&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 		</p>
+
 	</div><?php
 }
 
