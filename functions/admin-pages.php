@@ -64,7 +64,7 @@ add_action( 'admin_menu', 'gnt_admin_page' );
  * @return null
  */
 function gnt_settings_page_content() {
-  $settings = gnt_get_settings();
+	$settings = gnt_get_settings();
 
 	// Save the settings
 
