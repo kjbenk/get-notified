@@ -3,7 +3,7 @@
 # Tell Travis CI we're using PHP
 language: php
 
-sudo: required
+sudo: false
 
 matrix:
   include:
