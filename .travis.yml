@@ -13,8 +13,6 @@ matrix:
     env: WP_TRAVISCI=travis:phpvalidate
   - php: hhvm
     env: WP_TRAVISCI=travis:phpunit WP_VERSION=latest
-  - php: 7.0
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=4.7.3
   allow_failures:
   - php: hhvm
   fast_finish: true
