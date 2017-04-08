@@ -114,13 +114,14 @@ if ( ! class_exists( 'GNT_Slack' ) ) :
 						</td>
 					</tr>
 
-					<tr style="<?php esc_attr_e( $this->show_setting( $settings[ $this->slug . '-enable' ] ) ); ?>">
+					<tr style="<?php if ( !isset($settings[ $this->slug . '-enable' ]) ) { esc_attr_e( $this->hide_setting() ); } ?>">
 						<th><?php esc_html_e( 'Webhook URL', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-webhook" value="<?php echo ( isset( $settings[ $this->slug . '-webhook' ] ) ? esc_attr( $settings[ $this->slug . '-webhook' ] ) : '' ); ?>"/>
 							<p class="description"><?php esc_html_e( 'Create a', 'get-notified' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_html_e( 'Slack Webhook', 'get-notified' ); ?></a> <?php esc_html_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'get-notified' ); ?></p>
 						</td>
 					</tr>
+
 				</tbody>
 			</table>
 			<?php
