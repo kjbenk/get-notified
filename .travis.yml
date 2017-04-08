@@ -8,23 +8,11 @@ sudo: false
 matrix:
   include:
   - php: 5.6
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=nightly
-  - php: 5.6
     env: WP_TRAVISCI=travis:phpunit WP_VERSION=latest
   - php: 5.6
     env: WP_TRAVISCI=travis:phpvalidate
-  - php: 5.5
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=nightly
-  - php: 5.4
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=nightly
-  - php: 5.3
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=nightly
-  - php: 5.2
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=nightly
   - php: hhvm
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=nightly
-  - php: 7.0
-    env: WP_TRAVISCI=travis:phpunit WP_VERSION=nightly
+    env: WP_TRAVISCI=travis:phpunit WP_VERSION=latest
   allow_failures:
   - php: hhvm
   fast_finish: true
@@ -54,28 +42,15 @@ before_script:
       composer self-update
       composer install --no-interaction
     fi
-  # Setup Coveralls
-  - |
-    if [[ "$WP_TRAVISCI" == "travis:codecoverage" ]] ; then
-      composer self-update
-      composer install --no-interaction
-    fi
 script:
   - grunt $WP_TRAVISCI
 
-after_script:
-  # Push coverage off to Codecov
-- |
-  if [[ "$WP_TRAVISCI" == "travis:codecoverage" ]] ; then
-    bash <(curl -s https://codecov.io/bash)
-  fi
 git:
   depth: 1
 
 branches:
   only:
     - master
-    - develop
 
 notifications:
   email:

@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h1><?php esc_attr_e( 'Post Status Hooks', 'get-notified' ); ?></h1>
+	<h1><?php esc_html_e( 'Post Status Hooks', 'get-notified' ); ?></h1>
 	<form method="post">
 		<?php $gnt_hooks_table = new GNT_Hooks_Table();
 		$gnt_hooks_table->prepare_items();

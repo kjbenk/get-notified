@@ -83,19 +83,44 @@ function gnt_settings_page_content() {
  */
 function gnt_info_page_content() {
 	?><div class="wrap">
-		<h1><?php esc_attr_e( 'Information', 'get-notified' ); ?></h1>
-		<p>This is an open source project that I started to give developers the tools they need to create great notifications for a WordPress site. I welcome any help from developers who want to contribute :)</p>
-		<p>There are two main parts of the plugin: Hooks and Integrations. Hooks are basically the WordPress defined action hooks for any specific event. This can be when a post is published or when a theme is activated. Integrations are the tools used to notify people of these events, like email or slack. Developers can add new Hooks and/or Integrations to the plugin to perform the tasks they need.</p>
 
-		<a href="https://github.com/kjbenk/get-notified" target="_blank">Contribute - Read more</a> |
-		<a href="https://github.com/kjbenk/get-notified/issues" target="_blank">Report a Bug</a>
+		<h1><?php esc_html_e( 'Information', 'get-notified' ); ?></h1>
+
+		<p><?php esc_html_e( 'Get Notified sends you notifications when certain events happen on your site.', 'get-notified' ); ?></p>
+
+		<p><?php esc_html_e( 'For now, the plugin simply sends a notification via email or a message to a Slack channel when a post changes status (i.e. publish, pending, draft, trash) your site.', 'get-notified' ); ?></p>
+
+		<h2><?php esc_html_e( 'How to use Get Notified', 'get-notified' ); ?></h2>
+
+		<p><?php esc_html_e( 'First, enable what you want to be notified about on the', 'get-notified' ); ?>
+		  <a href="<?php echo esc_url( get_admin_url() . 'admin.php?page=get-notified-hooks' ); ?>"><?php esc_html_e( 'Hooks settings page.', 'get-notified' ); ?></a>
+		</p>
+
+		<p><?php esc_html_e( 'Then, select where you want to be notified on the', 'get-notified' ); ?>
+		  <a href="<?php echo esc_url( get_admin_url() . 'admin.php?page=get-notified-integrations' ); ?>"><?php esc_html_e( 'Integrations settings page.', 'get-notified' ); ?></a>
+		</p>
+
+		<p><?php esc_html_e( 'We will continue to add new integrations and WordPress events, so please feel free to ', 'get-notified' ); ?>
+		  <a href="<?php echo esc_url( 'https://github.com/kjbenk/get-notified/issues' ); ?>" target="_blank"><?php esc_html_e( 'request new features.', 'get-notified' ); ?></a>
+		</p>
+
+		<h2><?php esc_html_e( 'Contributing', 'get-notified' ); ?></h2>
+
+		<p><?php esc_html_e( 'This is an open source project that I started to give developers the tools they need to create great notifications for a WordPress site. I welcome any help from developers who want to contribute :)', 'get-notified' ); ?></p>
+
+		<p><?php esc_html_e( 'There are two main parts of the plugin: Hooks and Integrations. Hooks are basically the WordPress defined action hooks for any specific event. This can be when a post is published or when a theme is activated. Integrations are the tools used to notify people of these events, like Email or Slack. Developers can add new Hooks and/or Integrations to the plugin to perform the tasks they need.', 'get-notified' ); ?></p>
+
+		<a href="<?php echo esc_url( 'https://github.com/kjbenk/get-notified' ); ?>" target="_blank"><?php esc_html_e( 'Contribute - Read more', 'get-notified' ); ?></a> |
+		<a href="<?php echo esc_url( 'https://github.com/kjbenk/get-notified/issues' ); ?>" target="_blank"><?php esc_html_e( 'Report a Bug', 'get-notified' ); ?></a>
 
 		<p>
 			<iframe src="https://ghbtns.com/github-btn.html?user=kjbenk&repo=get-notified&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 		</p>
+
 		<p>
 			<iframe src="https://ghbtns.com/github-btn.html?user=kjbenk&repo=get-notified&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
 		</p>
+
 	</div><?php
 }
 
