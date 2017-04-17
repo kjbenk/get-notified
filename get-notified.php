@@ -145,6 +145,7 @@ if ( ! class_exists( 'Get_Notified' ) ) :
 
 			include_once( GET_NOTIFIED_PLUGIN_DIR . 'hooks/hooks-table.php' );
 			include_once( GET_NOTIFIED_PLUGIN_DIR . 'hooks/posts.php' );
+            include_once( GET_NOTIFIED_PLUGIN_DIR . 'hooks/comments.php' );
 
 			// Integrations
 

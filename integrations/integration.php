@@ -77,6 +77,6 @@ if ( ! class_exists( 'GNT_Integration' ) ) :
 	}
 
 	$gnt_integration_class = new GNT_Integration();
-	add_action( 'admin_init', array( $gnt_integration_class, 'add_hooks' ) );
+	add_action( 'init', array( $gnt_integration_class, 'add_hooks' ), 11 );
 
 endif;
