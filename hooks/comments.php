@@ -30,11 +30,10 @@ if ( ! class_exists( 'GNT_Hook_Comment' ) ) :
 		}
 
 		/**
-		 * Post status change
+		 * Comment Created
 		 *
-		 * @param  string   $new_status The new status of the post
-		 * @param  string   $old_status The old statud of the post
-		 * @param  WP_Post  $post	   The WP_Post object
+		 * @param  int      $comment_id The comment id
+		 * @param  object   $comment_object The comment object
 		 * @return null
 		 */
 		function comment_created( $comment_id, $comment_object ) {
