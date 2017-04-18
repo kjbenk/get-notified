@@ -71,15 +71,12 @@ if ( ! class_exists( 'GNT_Integration' ) ) :
 		 * @param  string $setting The setting
 		 * @return string		  Style attribute
 		 */
-		public function show_setting( $setting ) {
-			if ( isset( $setting ) && $setting ) {
-				return '';
-			}
+		public function hide_setting() {
 			return 'display:none;';
 		}
 	}
 
 	$gnt_integration_class = new GNT_Integration();
-	add_action( 'admin_init', array( $gnt_integration_class, 'add_hooks' ) );
+	add_action( 'init', array( $gnt_integration_class, 'add_hooks' ), 11 );
 
 endif;

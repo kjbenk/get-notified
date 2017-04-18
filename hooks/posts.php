@@ -36,7 +36,7 @@ if ( ! class_exists( 'GNT_Hook_Post' ) ) :
 		 * Post status change
 		 *
 		 * @param  string   $new_status The new status of the post
-		 * @param  string   $old_status The old statud of the post
+		 * @param  string   $old_status The old status of the post
 		 * @param  WP_Post  $post	   The WP_Post object
 		 * @return null
 		 */

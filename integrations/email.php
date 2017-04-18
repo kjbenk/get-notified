@@ -81,11 +81,24 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 			// Post Status
 
 			if ( isset( $data['post_status'] ) && isset( $data['post'] ) ) {
-				$subject = $data['post']->post_title . ' changed status to ' . $data['post_status'];
-				$message = $data['post']->post_title . ' changed status to ' . $data['post_status'] . '.' .
+				$subject = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' changed status to ', 'get-notified' ) . esc_html__( $data['post_status'], 'get-notified' );
+				$message = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' changed status to ', 'get-notified' ) . esc_html__( $data['post_status'], 'get-notified' ) . '.' .
 					$this->new_line .
 					$this->new_line .
-					'View: ' . get_post_permalink( $data['post']->ID );
+					esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
+			}
+
+			// Comment Created
+
+			if ( isset( $data['comment_object'] ) && isset( $data['post'] ) ) {
+				$subject = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' has a new comment by ', 'get-notified' ) . esc_html__( $data['comment_object']->comment_author, 'get-notified' );
+				$message = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' has a new comment by ', 'get-notified' ) . esc_html__( $data['comment_object']->comment_author, 'get-notified' ) . ':' .
+					$this->new_line .
+					$this->new_line .
+					'"' . esc_html__( $data['comment_data']->comment_content, 'get-notified' ) . '"' .
+					$this->new_line .
+					$this->new_line .
+					esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
 			}
 
 			wp_mail(
@@ -115,13 +128,14 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 						</td>
 					</tr>
 
-					<tr style="<?php esc_attr_e( $this->show_setting( $settings[ $this->slug . '-enable' ] ) ); ?>">
+					<tr style="<?php echo ( ! isset( $settings[ $this->slug . '-enable' ] ) ? esc_attr( $this->hide_setting() ) : '' ) ?>">
 						<th><?php esc_html_e( 'To Email', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-to-emails" value="<?php echo ( isset( $settings[ $this->slug . '-to-emails' ] ) && ! empty( $settings[ $this->slug . '-to-emails' ] ) ? esc_attr( $settings[ $this->slug . '-to-emails' ] ) : esc_attr( get_option( 'admin_email' ) ) ); ?>"/>
 							<p class="description"><?php esc_html_e( 'What emails should get this notification? Use a comma separated list for multiple emails.', 'get-notified' ); ?></p>
 						</td>
 					</tr>
+
 				</tbody>
 			</table>
 			<?php

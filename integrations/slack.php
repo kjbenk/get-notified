@@ -77,6 +77,15 @@ if ( ! class_exists( 'GNT_Slack' ) ) :
 				) );
 				return;
 			}
+
+			// Comment Created
+
+			if ( isset( $data['comment_object'] ) && isset( $data['post'] ) ) {
+				$this->send_message( $webhook, array(
+					'text'  => '<' . get_post_permalink( $data['post']->ID ) . '|' . $data['post']->post_title . '> has a new comment by ' . $data['comment_object']->comment_author . '.',
+				) );
+				return;
+			}
 		}
 
 		/**
@@ -114,13 +123,14 @@ if ( ! class_exists( 'GNT_Slack' ) ) :
 						</td>
 					</tr>
 
-					<tr style="<?php esc_attr_e( $this->show_setting( $settings[ $this->slug . '-enable' ] ) ); ?>">
+					<tr style="<?php echo ( ! isset( $settings[ $this->slug . '-enable' ] ) ? esc_attr( $this->hide_setting() ) : '' ) ?>">
 						<th><?php esc_html_e( 'Webhook URL', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-webhook" value="<?php echo ( isset( $settings[ $this->slug . '-webhook' ] ) ? esc_attr( $settings[ $this->slug . '-webhook' ] ) : '' ); ?>"/>
 							<p class="description"><?php esc_html_e( 'Create a', 'get-notified' ); ?> <a href="https://my.slack.com/services/new/incoming-webhook/" target="_blank"><?php esc_html_e( 'Slack Webhook', 'get-notified' ); ?></a> <?php esc_html_e( 'and then save the URL here.  This Webhook will be used to send data to Slack.', 'get-notified' ); ?></p>
 						</td>
 					</tr>
+
 				</tbody>
 			</table>
 			<?php

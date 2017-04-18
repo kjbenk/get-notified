@@ -1,7 +1,7 @@
 === Get Notified ===
 Contributors: kjbenk, wpmonty
 Tags: notification, notify, email, message, ping, alert, slack, post, post status, status
-Requires at least: 4.0
+Requires at least: 4.5
 Tested up to: 4.7.3
 Stable tag: 1.0.8
 License: GPLv2 or later
@@ -9,7 +9,7 @@ License: GPLv2 or later
 Get Notified is a simple to use notification plugin that sends you messages of certain WordPress events via Email or Slack.
 
 == Description ==
-Get Notified sends you notifications when certain events happen on your site. For now, the plugin simply sends a notification via Email or Slack when a post changes status (i.e. publish, pending, draft, trash) on your site.
+Get Notified sends you notifications when certain events happen on your site. For now, the plugin simply sends a notification via Email or Slack when a post changes status (i.e. publish, pending, draft, trash) or a new comment is created on your site.
 
 *Examples*
 
@@ -66,6 +66,7 @@ You can submit all bugs via issues at the Github repo.
 == Changelog ==
 
 = 1.0.8 = 2017-4-5
+* ADDED: Comment Created hook
 * UPDATED: Readme text to include new FAQs
 * UPDATED: Tested with 4.7.3
 
