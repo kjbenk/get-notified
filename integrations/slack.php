@@ -77,6 +77,15 @@ if ( ! class_exists( 'GNT_Slack' ) ) :
 				) );
 				return;
 			}
+
+			// Comment Created
+
+			if ( isset( $data['comment_object'] ) && isset( $data['post'] ) ) {
+				$this->send_message( $webhook, array(
+					'text'  => '<' . get_post_permalink( $data['post']->ID ) . '|' . $data['post']->post_title . '> has a new comment by ' . $data['comment_object']->comment_author . '.',
+				) );
+				return;
+			}
 		}
 
 		/**
