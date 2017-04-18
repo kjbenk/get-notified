@@ -88,7 +88,7 @@ function gnt_info_page_content() {
 
 		<p><?php esc_html_e( 'Get Notified sends you notifications when certain events happen on your site.', 'get-notified' ); ?></p>
 
-		<p><?php esc_html_e( 'For now, the plugin simply sends a notification via email or a message to a Slack channel when a post changes status (i.e. publish, pending, draft, trash) your site.', 'get-notified' ); ?></p>
+		<p><?php esc_html_e( 'For now, the plugin simply sends a notification via email or a message to a Slack channel when a post changes status (i.e. publish, pending, draft, trash) or if a new comment is created.', 'get-notified' ); ?></p>
 
 		<h2><?php esc_html_e( 'How to use Get Notified', 'get-notified' ); ?></h2>
 
