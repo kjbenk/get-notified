@@ -101,8 +101,6 @@ if ( ! class_exists( 'GNT_Email' ) ) :
                     esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
 			}
 
-			error_log($message);die();
-
 			wp_mail(
 				apply_filters( 'gnt_integration_' . $this->slug . '_to_emails', $to_emails ),
 				apply_filters( 'gnt_integration_' . $this->slug . '_subject', $subject ),
