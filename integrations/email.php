@@ -88,18 +88,18 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 					'View: ' . get_post_permalink( $data['post']->ID );
 			}
 
-      // Comment Created
+			// Comment Created
 
-      if ( isset( $data['comment_object'] ) && isset( $data['post'] ) ) {
-        $subject = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author;
-        $message = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author . ':' .
-          $this->new_line .
-          $this->new_line .
+			if ( isset( $data['comment_object'] ) && isset( $data['post'] ) ) {
+				$subject = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author;
+				$message = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author . ':' .
+					$this->new_line .
+					$this->new_line .
 					'"' . $data['comment_data']->comment_content . '"' .
 					$this->new_line .
 					$this->new_line .
-          'View: ' . get_post_permalink( $data['post']->ID );
-      }
+					'View: ' . get_post_permalink( $data['post']->ID );
+			}
 
 			wp_mail(
 				apply_filters( 'gnt_integration_' . $this->slug . '_to_emails', $to_emails ),
