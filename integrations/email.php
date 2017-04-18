@@ -81,25 +81,27 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 			// Post Status
 
 			if ( isset( $data['post_status'] ) && isset( $data['post'] ) ) {
-				$subject = $data['post']->post_title . ' changed status to ' . $data['post_status'];
-				$message = $data['post']->post_title . ' changed status to ' . $data['post_status'] . '.' .
+				$subject = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' changed status to ', 'get-notified' ) . esc_html__( $data['post_status'], 'get-notified' );
+				$message = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' changed status to ', 'get-notified' ) . esc_html__( $data['post_status'], 'get-notified' ) . '.' .
 					$this->new_line .
 					$this->new_line .
-					'View: ' . get_post_permalink( $data['post']->ID );
+                    esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
 			}
 
 			// Comment Created
 
 			if ( isset( $data['comment_object'] ) && isset( $data['post'] ) ) {
-				$subject = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author;
-				$message = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author . ':' .
+				$subject = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' has a new comment by ', 'get-notified' ) . esc_html__( $data['comment_object']->comment_author, 'get-notified' );
+				$message = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' has a new comment by ', 'get-notified' ) . esc_html__( $data['comment_object']->comment_author, 'get-notified' ) . ':' .
 					$this->new_line .
 					$this->new_line .
-					'"' . $data['comment_data']->comment_content . '"' .
+					'"' . esc_html__( $data['comment_data']->comment_content, 'get-notified' ) . '"' .
 					$this->new_line .
 					$this->new_line .
-					'View: ' . get_post_permalink( $data['post']->ID );
+                    esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
 			}
+
+			error_log($message);die();
 
 			wp_mail(
 				apply_filters( 'gnt_integration_' . $this->slug . '_to_emails', $to_emails ),
@@ -128,7 +130,7 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 						</td>
 					</tr>
 
-					<tr style="<?php if ( ! isset( $settings[ $this->slug . '-enable' ] ) ) { esc_attr_e( $this->hide_setting() ); } ?>">
+					<tr style="<?php echo ( ! isset( $settings[ $this->slug . '-enable' ] ) ? esc_attr_e( $this->hide_setting() ) : '' ) ?>">
 						<th><?php esc_html_e( 'To Email', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-to-emails" value="<?php echo ( isset( $settings[ $this->slug . '-to-emails' ] ) && ! empty( $settings[ $this->slug . '-to-emails' ] ) ? esc_attr( $settings[ $this->slug . '-to-emails' ] ) : esc_attr( get_option( 'admin_email' ) ) ); ?>"/>

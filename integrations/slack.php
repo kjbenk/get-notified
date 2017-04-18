@@ -123,7 +123,7 @@ if ( ! class_exists( 'GNT_Slack' ) ) :
 						</td>
 					</tr>
 
-					<tr style="<?php if ( ! isset( $settings[ $this->slug . '-enable' ] ) ) { esc_attr_e( $this->hide_setting() ); } ?>">
+					<tr style="<?php ( ! isset( $settings[ $this->slug . '-enable' ] ) ? esc_attr_e( $this->hide_setting() ) : '' ) ?>">
 						<th><?php esc_html_e( 'Webhook URL', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-webhook" value="<?php echo ( isset( $settings[ $this->slug . '-webhook' ] ) ? esc_attr( $settings[ $this->slug . '-webhook' ] ) : '' ); ?>"/>
