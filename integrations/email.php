@@ -128,7 +128,7 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 						</td>
 					</tr>
 
-					<tr style="<?php echo ( ! isset( $settings[ $this->slug . '-enable' ] ) ? esc_attr_e( $this->hide_setting() ) : '' ) ?>">
+					<tr style="<?php echo ( ! isset( $settings[ $this->slug . '-enable' ] ) ? esc_attr( $this->hide_setting() ) : '' ) ?>">
 						<th><?php esc_html_e( 'To Email', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-to-emails" value="<?php echo ( isset( $settings[ $this->slug . '-to-emails' ] ) && ! empty( $settings[ $this->slug . '-to-emails' ] ) ? esc_attr( $settings[ $this->slug . '-to-emails' ] ) : esc_attr( get_option( 'admin_email' ) ) ); ?>"/>
