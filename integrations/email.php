@@ -85,7 +85,7 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 				$message = esc_html__( $data['post']->post_title, 'get-notified' ) . esc_html__( ' changed status to ', 'get-notified' ) . esc_html__( $data['post_status'], 'get-notified' ) . '.' .
 					$this->new_line .
 					$this->new_line .
-                    esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
+					esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
 			}
 
 			// Comment Created
@@ -98,7 +98,7 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 					'"' . esc_html__( $data['comment_data']->comment_content, 'get-notified' ) . '"' .
 					$this->new_line .
 					$this->new_line .
-                    esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
+					esc_html__( 'View: ', 'get-notified' ) . get_post_permalink( $data['post']->ID );
 			}
 
 			wp_mail(
