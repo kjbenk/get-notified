@@ -91,14 +91,14 @@ if ( ! class_exists( 'GNT_Email' ) ) :
       // Comment Created
 
       if ( isset( $data['comment_object'] ) && isset( $data['post'] ) ) {
-          $subject = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author;
-          $message = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author . ':' .
-              $this->new_line .
-	            $this->new_line .
-							'"' . $data['comment_data']->comment_content . '"' .
-							$this->new_line .
-							$this->new_line .
-              'View: ' . get_post_permalink( $data['post']->ID );
+        $subject = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author;
+        $message = $data['post']->post_title . ' has a new comment by ' . $data['comment_object']->comment_author . ':' .
+          $this->new_line .
+          $this->new_line .
+					'"' . $data['comment_data']->comment_content . '"' .
+					$this->new_line .
+					$this->new_line .
+          'View: ' . get_post_permalink( $data['post']->ID );
       }
 
 			wp_mail(
@@ -128,7 +128,7 @@ if ( ! class_exists( 'GNT_Email' ) ) :
 						</td>
 					</tr>
 
-					<tr style="<?php if ( !isset($settings[ $this->slug . '-enable' ]) ) { esc_attr_e( $this->hide_setting() ); } ?>">
+					<tr style="<?php if ( ! isset( $settings[ $this->slug . '-enable' ] ) ) { esc_attr_e( $this->hide_setting() ); } ?>">
 						<th><?php esc_html_e( 'To Email', 'get-notified' ); ?></th>
 						<td>
 							<input type="text" class="regular-text" name="<?php esc_attr_e( $this->slug ); ?>-to-emails" value="<?php echo ( isset( $settings[ $this->slug . '-to-emails' ] ) && ! empty( $settings[ $this->slug . '-to-emails' ] ) ? esc_attr( $settings[ $this->slug . '-to-emails' ] ) : esc_attr( get_option( 'admin_email' ) ) ); ?>"/>

@@ -22,11 +22,11 @@ if ( ! class_exists( 'GNT_Hook_Comment' ) ) :
 		 * Add a hooks
 		 */
 		function add_hooks() {
-            gnt_register_hook( 'comment_created', array(
-                'slug'  => 'comment_created',
-                'name'  => __( 'Comment Created', 'get-notified' ),
-                'desc'  => __( 'Triggered when a comment is added to a post.', 'get-notified' ),
-            ) );
+			gnt_register_hook( 'comment_created', array(
+		    'slug'  => 'comment_created',
+		    'name'  => __( 'Comment Created', 'get-notified' ),
+		    'desc'  => __( 'Triggered when a comment is added to a post.', 'get-notified' ),
+			) );
 		}
 
 		/**
@@ -39,19 +39,19 @@ if ( ! class_exists( 'GNT_Hook_Comment' ) ) :
 		 */
 		function comment_created( $comment_id, $comment_object ) {
 			$hook_settings = gnt_get_hook_settings();
-			$post = get_post($comment_object->comment_post_ID);
+			$post = get_post( $comment_object->comment_post_ID );
 
-            if ( isset( $hook_settings[ 'comment_created-enable' ] ) && $hook_settings[ 'comment_created-enable' ] ) {
-                if ( isset($comment_id) && isset($comment_object) ) {
-                    do_action( 'gnt_hook_comment_created', array(
-                        'hook'		  => 'comment_created',
-                        'text'		  => $post->post_title . __( ' has a new comment by ' . $comment_object->comment_author, 'get-notified' ),
-                        'post'		  => $post,
-                        'comment_id'   => $comment_id,
-                        'comment_object'   => $comment_object,
-                    ) );
-                }
-            }
+      if ( isset( $hook_settings['comment_created-enable'] ) && $hook_settings['comment_created-enable'] ) {
+        if ( isset( $comment_id ) && isset( $comment_object ) ) {
+          do_action( 'gnt_hook_comment_created', array(
+            'hook'		  => 'comment_created',
+            'text'		  => $post->post_title . __( ' has a new comment by ' . $comment_object->comment_author, 'get-notified' ),
+            'post'		  => $post,
+            'comment_id'   => $comment_id,
+            'comment_object'   => $comment_object,
+          ) );
+        }
+      }
 		}
 	}
 
