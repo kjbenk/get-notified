@@ -1,7 +1,7 @@
 === Get Notified ===
 Contributors: kjbenk, wpmonty
 Tags: notification, notify, email, message, ping, alert, slack, post, post status, status
-Requires at least: 4.0
+Requires at least: 4.5
 Tested up to: 4.7.3
 Stable tag: 1.0.8
 License: GPLv2 or later
